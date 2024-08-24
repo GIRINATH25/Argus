@@ -8,27 +8,30 @@ import {
   View,
 } from "react-native";
 import React, { useState } from "react";
+import axios from 'axios';
 
 const Register = () => {
   const [name, setName] = useState("");
   const [phoneNo, setPhoneNo] = useState();
   const [regNo, setRegNO] = useState();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     try {
+      const status = await axios.get(`/verifyCarNo/${regNo.toUpperCase()}`);
       if (phoneNo.length !== 10) {
         ToastAndroid.show("Phone number not valid", ToastAndroid.SHORT);
         return;
       }
-      if (regNo.length <= 5) {
-        ToastAndroid.show("Register number not valid", ToastAndroid.SHORT);
+      if (regNo.length <= 5 && status.data.avail === "False") {
+        ToastAndroid.show("Car number not valid", ToastAndroid.SHORT);
         return;
       }
       console.log(name, phoneNo, regNo.toUpperCase());
     } catch (err) {
-      console.log("Error on submitting!!!!\n" + err);
+      console.log("Error on submitting!!!!", err.response ? err.response.data : err.message);
     }
   };
+  
 
   return (
     <View style={s.container}>
