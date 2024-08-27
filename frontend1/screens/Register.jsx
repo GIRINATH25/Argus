@@ -15,7 +15,7 @@ const Register = () => {
   const [phoneNo, setPhoneNo] = useState();
   const [regNo, setRegNO] = useState();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async () => { 
     try {
       const status = await axios.get(`/verifyCarNo/${regNo.toUpperCase()}`);
       if (phoneNo.length !== 10) {
@@ -26,7 +26,9 @@ const Register = () => {
         ToastAndroid.show("Car number not valid", ToastAndroid.SHORT);
         return;
       }
-      console.log(name, phoneNo, regNo.toUpperCase());
+      const store = await axios.post(`/register`,{name:name,phno:phoneNo,regNo:regNo})
+      console.log(store.data);
+      
     } catch (err) {
       console.log("Error on submitting!!!!", err.response ? err.response.data : err.message);
     }
