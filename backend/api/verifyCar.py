@@ -13,7 +13,7 @@ def find_all(strs):
         with urlopen(url) as page:
             html = page.read().decode('utf-8')
             findavail = html.find('Maker')
-            avail = "False" if findavail == -1 else "True"
+            avail = False if findavail == -1 else True
             return jsonify({"avail": avail})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -27,7 +27,7 @@ def create_accounts():
                 sav = cur.execute('''INSERT INTO UserInfo (name, phno, regno) VALUES (%s,%s,%s)''',
                                                         (data['name'],data['phno'],data['regNo']))
                 con.commit()
-                print(sav)
-        return jsonify({"messsage":'hello'})
+                return jsonify({'message':'registered'})
+        return jsonify({"messsage":'problem in insert'})
     except Exception as e:
         return jsonify({"error":str(e)}), 500

@@ -1,4 +1,5 @@
 import {
+  Alert,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
@@ -22,13 +23,14 @@ const Register = () => {
         ToastAndroid.show("Phone number not valid", ToastAndroid.SHORT);
         return;
       }
-      if (regNo.length <= 5 && status.data.avail === "False") {
+      console.log(status.data.avail)
+      if (regNo.length >= 5 && status.data.avail === false) {
         ToastAndroid.show("Car number not valid", ToastAndroid.SHORT);
         return;
       }
       const store = await axios.post(`/register`,{name:name,phno:phoneNo,regNo:regNo})
-      console.log(store.data);
-      
+      Alert.alert(`${JSON.stringify(store.data)}`)
+
     } catch (err) {
       console.log("Error on submitting!!!!", err.response ? err.response.data : err.message);
     }
