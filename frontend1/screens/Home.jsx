@@ -1,22 +1,19 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import TopTab from "../navigation/TopTab";
 
 const Home = () => {
   return (
     <SafeAreaView style={s.container}>
-        <View>
-            <Text>Home</Text>
-        </View>
+      <TopTab />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 const s = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center'
-    }
-})
+  container: {
+    flex: 1,
+  },
+});

@@ -40,7 +40,7 @@ const Otp = () => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={s.submit}>
-          <Text>Verify</Text>
+          <Text style={s.submitText}>Verify</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -63,10 +63,12 @@ const s = StyleSheet.create({
     color: "white",
     fontSize: 30,
     fontWeight: "bold",
+    fontFamily: 'sans-serif',
   },
   infotext: {
     marginBottom: 30,
     color: "#FFF",
+    fontFamily: 'sans-serif',
   },
   submit: {
     width: "80%",
@@ -74,6 +76,10 @@ const s = StyleSheet.create({
     borderRadius: 25,
     alignItems: "center",
     paddingVertical: "5%",
+  },
+  submitText: {
+    fontFamily: 'sans-serif',
+    color: "#FFF",
   },
   oneline: {
     flexDirection: "row",

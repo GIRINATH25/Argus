@@ -30,12 +30,10 @@ const Register = () => {
       }
       const store = await axios.post(`/register`,{name:name,phno:phoneNo,regNo:regNo})
       Alert.alert(`${JSON.stringify(store.data)}`)
-
     } catch (err) {
       console.log("Error on submitting!!!!", err.response ? err.response.data : err.message);
     }
   };
-  
 
   return (
     <View style={s.container}>
@@ -75,7 +73,7 @@ const Register = () => {
         </View>
       </KeyboardAvoidingView>
       <TouchableOpacity style={s.submit} onPress={handleSubmit}>
-        <Text>Next →</Text>
+        <Text style={s.submitText}>Next →</Text>
       </TouchableOpacity>
     </View>
   );
@@ -94,6 +92,7 @@ const s = StyleSheet.create({
     color: "white",
     fontSize: 30,
     marginBottom: 20,
+    fontFamily: 'sans-serif',
   },
   input: {
     width: "80%",
@@ -108,12 +107,17 @@ const s = StyleSheet.create({
     fontSize: 16,
     color: "#FFF",
     paddingVertical: "5%",
+    fontFamily: 'sans-serif',
   },
   submit: {
     width: "80%",
     backgroundColor: "#FFA726",
     borderRadius: 25,
     alignItems: "center",
-    paddingVertical:"5%"
+    paddingVertical: "5%",
+  },
+  submitText: {
+    fontFamily: 'sans-serif',
+    color: "#FFF",
   },
 });
